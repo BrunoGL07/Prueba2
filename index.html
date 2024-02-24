@@ -1,51 +1,35 @@
 <!DOCTYPE html>
-<html lang="es">
-<html >
+<html lang="en">
 <head>
-    <title>Vaya</title>
-    <script>
-        function sumar() {
-            // Captura los valores ingresados por el usuario
-            var num1 = parseFloat(document.getElementById('num1').value);
-            var num2 = parseFloat(document.getElementById('num2').value);
-
-            // Realiza la suma
-            var resultado = num1 + num2;
-
-            // Muestra el resultado 
-            document.getElementById('resultado').innerHTML = 'El resultado de la suma es: ' + resultado;
-        }
-    </script>
-</head>
-<style>
-        body {
-            /* Definición del fondo degradado */
-            background: linear-gradient(to bottom, #007bff, #0000ff);
-            /* Para navegadores que no soportan gradientes */
-            background-color: #007bff;
-            /* Establecer color de fondo de respaldo */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón Móvil</title>
+    <style>
+        #noButton {
+            position: relative;
         }
     </style>
+</head>
 <body>
-    <h1>Hola buenas</h1>
-    <h2>Aqui nomas haciendo pruebas</h2>
-    <p>
-         Vaya<br><br><span style="color:red;"> </span>
-    </p>
-    <a target="_blank" href="https://www.google.com.mx">Ir a Google</a>
-    <!--Esto es un comentario y no es visible en el navegador-->
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT_UEZqWgqT0_BZQNKwsY2TwH3tH25oyYPQg&usqp=CAU" width="400"/>
+    <div id="question">
+        <p>¿José es homosexual?</p>
+        <button id="yesButton">Sí</button>
+        <button id="noButton" onclick="moveButton()">No</button>
+    </div>
 
-    <h2>Sumar</h2>
-    <label for="num1">Primer numero:</label>
-    <input type="text" id="num1"><br><br>
+    <script>
+        function moveButton() {
+            const button = document.getElementById('noButton');
+            const questionDiv = document.getElementById('question');
 
-    <label for="num2">Segundo numero:</label>
-    <input type="text" id="num2"><br><br>
-
-    <button onclick="sumar()">Sumar</button>
-
-    <div id="resultado"></div>
-
+            if (button.style.bottom === '') {
+                button.style.bottom = '0';
+            } else {
+                let currentBottom = parseFloat(button.style.bottom);
+                button.style.bottom = (currentBottom - 30) + 'px';
+            }
+            questionDiv.appendChild(button);
+        }
+    </script>
 </body>
 </html>
